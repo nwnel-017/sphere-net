@@ -1,4 +1,4 @@
-# My Web App
+# SphereNet
 
 Welcome to my web app! This is a simple Javascript web application to display a social media feed. It has functionality to sign in / sign up for an account, update the password, create and like posts, comment on a post, and follow or unfollow users. 
 
@@ -17,3 +17,4 @@ I built my app using primarily javascript, CSS, and HTML. I used the React and A
 * On the explore page, click on a user's username or picture to view their profile. On their profile page, you can see whether or not you follow the user. Try following / unfollowing users to view their posts on your home page.
 
 # Enjoy!
+
