@@ -65,7 +65,7 @@ function App() {
               <>
                 <header className="navbar">
                   <div className="navbar-left">
-                    <h1 className="logo">MyApp</h1>
+                    <h1 className="logo">SphereNet</h1>
                   </div>
                   <nav className="navbar-right">
                     <Link to="/" className="nav-link">
