@@ -1,12 +1,13 @@
-# My Web App
+# SphereNet
 
-Welcome to my web app! This is a simple javascript web application to display a social media feed. It has functionality to sign in / sign up for an account, update the password, create and like posts, comment on a post, and follow or unfollow users. 
+Welcome to my web app! This is a simple Javascript web application to display a social media feed. It has functionality to sign in / sign up for an account, update the password, create and like posts, comment on a post, and follow or unfollow users. 
 
 # How I built my app
 I built my app using primarily javascript, CSS, and HTML. I used the React and Axios libraries for my front end and Node js as the framework for my backend. I also used the Sequelize library for object relational mapping.
 
 # Directions
 * Clone repository locally
+* Use the command npm install to install dependencies
 * To deploy locally, navigate to the /server and /client directories, and run the command npm run start in both paths.
 
 # Features 
@@ -17,3 +18,5 @@ I built my app using primarily javascript, CSS, and HTML. I used the React and A
 * On the explore page, click on a user's username or picture to view their profile. On their profile page, you can see whether or not you follow the user. Try following / unfollowing users to view their posts on your home page.
 
 # Enjoy!
+
+
