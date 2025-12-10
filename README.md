@@ -7,6 +7,7 @@ I built my app using primarily javascript, CSS, and HTML. I used the React and A
 
 # Directions
 * Clone repository locally
+* Use the command npm install to install dependencies
 * To deploy locally, navigate to the /server and /client directories, and run the command npm run start in both paths.
 
 # Features 
@@ -17,4 +18,5 @@ I built my app using primarily javascript, CSS, and HTML. I used the React and A
 * On the explore page, click on a user's username or picture to view their profile. On their profile page, you can see whether or not you follow the user. Try following / unfollowing users to view their posts on your home page.
 
 # Enjoy!
+
 
