@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_URL, authHeaders } from "../helpers/api";
 
 function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
@@ -8,18 +9,19 @@ function ChangePassword() {
   const changepassword = () => {
     axios
       .put(
-        "http://localhost:3001/auth/changepassword",
+        `${API_URL}/auth/changepassword`,
         {
           oldPassword: oldPassword,
           newPassword: newPassword,
         },
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
+        authHeaders()
       )
       .then((response) => {
         if (response.data.error) {
           alert(response.data.error);
+        } else {
+          alert("Password successfully changed");
         }
-        alert("Password successfully changed");
       });
   };
 
@@ -27,20 +29,20 @@ function ChangePassword() {
     <div>
       <h1>Update Your Password</h1>
       <input
-        type="text"
+        type="password"
         placeholder="Old Password..."
         onChange={(event) => {
           setOldPassword(event.target.value);
         }}
       />
       <input
-        type="text"
+        type="password"
         placeholder="New Password..."
         onChange={(event) => {
           setNewPassword(event.target.value);
         }}
       />
-      <button onClick={changepassword}>Save Chages</button>
+      <button onClick={changepassword}>Save Changes</button>
     </div>
   );
 }

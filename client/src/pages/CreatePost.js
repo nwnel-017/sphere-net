@@ -2,8 +2,9 @@ import React, { useContext, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { API_URL, authHeaders } from "../helpers/api";
 import { AuthContext } from "../helpers/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CreatePost() {
   const { authState } = useContext(AuthContext);
@@ -28,13 +29,9 @@ function CreatePost() {
   });
 
   const onSubmit = (data) => {
-    axios
-      .post("http://localhost:3001/posts", data, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        navigate("/");
-      });
+    axios.post(`${API_URL}/posts`, data, authHeaders()).then((response) => {
+      navigate("/");
+    });
   };
   return (
     <div className="createPostPage">
@@ -49,14 +46,14 @@ function CreatePost() {
           <Field
             id="inputCreatePost"
             name="title"
-            placeHolder="(Ex. Title...)"
+            placeholder="(Ex. Title...)"
           ></Field>
           <label>Post Text: </label>
           <ErrorMessage name="postText" component="span" />
           <Field
             id="inputCreatePost"
             name="postText"
-            placeHolder="(Ex. Post...)"
+            placeholder="(Ex. Post...)"
           ></Field>
           {/* <label>Username: </label>
           <ErrorMessage name="username" component="span" /> */}

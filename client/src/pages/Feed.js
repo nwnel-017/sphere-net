@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import axios from "axios";
+import { API_URL } from "../helpers/api";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -29,7 +30,7 @@ function Feed({ listOfPosts, likedPosts }) {
 
   const createPost = (data) => {
     axios
-      .post("http://localhost:3001/posts", data, {
+      .post(`${API_URL}/posts`, data, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => window.location.reload());
@@ -38,7 +39,7 @@ function Feed({ listOfPosts, likedPosts }) {
   const likePost = (postId) => {
     axios
       .post(
-        "http://localhost:3001/likes",
+        `${API_URL}/likes`,
         { PostId: postId },
         {
           headers: { accessToken: localStorage.getItem("accessToken") },

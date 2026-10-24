@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
+import { API_URL } from "../helpers/api";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 import "../App.css";
@@ -12,7 +13,7 @@ function Login() {
 
   const login = () => {
     const data = { username, password };
-    axios.post("http://localhost:3001/auth/login", data).then((response) => {
+    axios.post(`${API_URL}/auth/login`, data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {

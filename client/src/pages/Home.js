@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import axios from "axios";
+import { API_URL } from "../helpers/api";
 import Feed from "./Feed";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate, Link } from "react-router-dom";
@@ -20,7 +21,7 @@ function Home() {
       navigate("/login");
     } else {
       axios
-        .get("http://localhost:3001/posts/following", {
+        .get(`${API_URL}/posts/following`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then((response) => {
