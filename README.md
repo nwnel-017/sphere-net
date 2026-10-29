@@ -20,3 +20,4 @@ I built my app using primarily javascript, CSS, and HTML. I used the React and A
 # Enjoy!
 
 
+Thanks for checking out the project!
