@@ -5,9 +5,9 @@ function PageNotFound() {
   return (
     <div>
       <h1>Page Not Found</h1>
+      <p>Sorry, the page you're looking for doesn't exist.</p>
       <h3>
-        {" "}
-        Try this link: <Link to="/">Home Page</Link>
+        Go back to the <Link to="/">Home Page</Link>
       </h3>
     </div>
   );

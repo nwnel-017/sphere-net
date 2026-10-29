@@ -8,6 +8,7 @@ I built my app using primarily javascript, CSS, and HTML. I used the React and A
 # Directions
 * Clone repository locally
 * Use the command npm install to install dependencies
+* The client calls the API at http://localhost:3001 by default. To point it elsewhere, set `REACT_APP_API_URL` before starting the client (e.g. `REACT_APP_API_URL=https://api.example.com npm run start`).
 * To deploy locally, navigate to the /server and /client directories, and run the command npm run start in both paths.
 
 # Features 

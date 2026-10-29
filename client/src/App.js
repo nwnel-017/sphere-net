@@ -11,6 +11,7 @@ import Settings from "./pages/Settings";
 import { AuthContext } from "./helpers/AuthContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "./helpers/api";
 import ChangePassword from "./pages/ChangePassword";
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/auth/auth", {
+      .get(`${API_URL}/auth/auth`, {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },
@@ -42,12 +43,11 @@ function App() {
           });
         }
       });
-    setAuthState(true);
   }, []);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState(false);
+    setAuthState({ username: "", id: 0, status: false });
     window.location.reload(false); //force reload to return to login page
   };
 
@@ -56,7 +56,7 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
           <div>
-            {!authState ? (
+            {!authState.status ? (
               <>
                 <Link to="/login">Login</Link>
                 <Link to="/registration">Create Account</Link>

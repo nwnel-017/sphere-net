@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import axios from "axios";
+import { API_URL } from "../helpers/api";
 import Profile from "./Profile";
 import Feed from "./Feed";
 import { useEffect, useState } from "react";
@@ -18,7 +19,7 @@ function Explore() {
       navigate("/login");
     } else {
       axios
-        .get("http://localhost:3001/posts", {
+        .get(`${API_URL}/posts`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then((response) => {

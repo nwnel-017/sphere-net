@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../helpers/api";
 import { AuthContext } from "../helpers/AuthContext";
 import { useNavigate } from "react-router-dom";
 // import { post } from "../../../server/routes/Posts";
@@ -16,11 +17,11 @@ function Post() {
   useEffect(() => {
     //seems like useEffect only gets called when page refreshes -> this might be causing issue
     console.log("useEffect hook has been called");
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+    axios.get(`${API_URL}/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
     });
 
-    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+    axios.get(`${API_URL}/comments/${id}`).then((response) => {
       setComments(response.data);
     });
   }, []);
@@ -28,7 +29,7 @@ function Post() {
   const addComment = () => {
     axios
       .post(
-        "http://localhost:3001/comments",
+        `${API_URL}/comments`,
         {
           commentBody: newComment,
           PostId: id,
@@ -58,7 +59,7 @@ function Post() {
     try {
       console.log("post deleting");
       axios
-        .delete(`http://localhost:3001/posts/${id}`, {
+        .delete(`${API_URL}/posts/${id}`, {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           },
@@ -76,7 +77,7 @@ function Post() {
     if (option === "title") {
       let newTitle = prompt("Enter New Title: ");
       axios.put(
-        "http://localhost:3001/posts/title",
+        `${API_URL}/posts/title`,
         { newTitle: newTitle, id: id },
         { headers: { accessToken: localStorage.getItem("accessToken") } }
       );
@@ -85,7 +86,7 @@ function Post() {
     } else if (option === "body") {
       let newBody = prompt("Enter New Post Text: ");
       axios.put(
-        "http://localhost:3001/posts/postText",
+        `${API_URL}/posts/postText`,
         { newText: newBody, id: id },
         { headers: { accessToken: localStorage.getItem("accessToken") } }
       );
@@ -104,7 +105,7 @@ function Post() {
     try {
       console.log("executing delete on comment " + id + " on client side");
       axios
-        .delete(`http://localhost:3001/comments/${id}`, {
+        .delete(`${API_URL}/comments/${id}`, {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           },

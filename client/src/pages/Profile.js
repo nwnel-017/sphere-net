@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { AuthContext } from "../helpers/AuthContext";
 import axios from "axios";
+import { API_URL } from "../helpers/api";
 
 function Profile() {
   let { id } = useParams();
@@ -17,7 +18,7 @@ function Profile() {
     const fetchFollowStatus = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/auth/follow-status/${id}`,
+          `${API_URL}/auth/follow-status/${id}`,
           {
             headers: { accessToken: localStorage.getItem("accessToken") },
           }
@@ -30,11 +31,11 @@ function Profile() {
 
     fetchFollowStatus();
 
-    axios.get(`http://localhost:3001/auth/basicInfo/${id}`).then((response) => {
+    axios.get(`${API_URL}/auth/basicInfo/${id}`).then((response) => {
       setUsername(response.data.username);
     });
 
-    axios.get(`http://localhost:3001/posts/byUserId/${id}`).then((response) => {
+    axios.get(`${API_URL}/posts/byUserId/${id}`).then((response) => {
       setListOfPosts(response.data);
     });
   }, [id]);
@@ -44,8 +45,8 @@ function Profile() {
     setLoading(true);
     try {
       const url = isFollowing
-        ? `http://localhost:3001/auth/unfollow/${id}`
-        : `http://localhost:3001/auth/follow/${id}`;
+        ? `${API_URL}/auth/unfollow/${id}`
+        : `${API_URL}/auth/follow/${id}`;
 
       await axios.post(
         url,
